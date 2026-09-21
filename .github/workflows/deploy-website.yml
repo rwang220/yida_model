@@ -1,0 +1,45 @@
+# Publish docs/index.html to the global AWS CloudFront distribution.
+# Enable after infra/bootstrap-website.sh has created the stack:
+#   GitHub → Settings → Secrets: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY,
+#            WEBSITE_S3_BUCKET, CLOUDFRONT_DISTRIBUTION_ID
+#   GitHub → Settings → Variables: AWS_WEBSITE_DEPLOY=true
+
+name: Deploy website
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - docs/index.html
+      - .github/workflows/deploy-website.yml
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    if: github.event_name == 'workflow_dispatch' || vars.AWS_WEBSITE_DEPLOY == 'true'
+    runs-on: ubuntu-latest
+    env:
+      AWS_REGION: us-east-1
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Upload index.html
+        run: |
+          aws s3 cp docs/index.html "s3://${{ secrets.WEBSITE_S3_BUCKET }}/index.html" \
+            --content-type "text/html; charset=utf-8" \
+            --cache-control "public, max-age=300"
+
+      - name: Invalidate CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}" \
+            --paths "/*"
