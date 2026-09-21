@@ -14,6 +14,7 @@ This model is for research and engineering evaluation. It is **not** a medical d
 | --- | --- |
 | Weights and Hub model card | [huggingface.co/rwang220/Yida-Model-14B](https://huggingface.co/rwang220/Yida-Model-14B) |
 | This repository (docs, configs, tokenizer) | [github.com/rwang220/yida_model](https://github.com/rwang220/yida_model) |
+| English website | [`website/index.html`](website/index.html) |
 | Base model | [Qwen/Qwen3-14B](https://huggingface.co/Qwen/Qwen3-14B) |
 
 ## What this repository contains
@@ -29,6 +30,7 @@ Git does not store the ~27.5 GiB weight shards. Those live on Hugging Face.
 | `chat_template.jinja` | Qwen3 thinking / tool-calling chat template |
 | `model.safetensors.index.json` | Index of the six Hub weight shards |
 | `examples/inference.py` | Load from Hub and generate |
+| `website/index.html` | English official website (offline single file) |
 
 Download weights:
 
