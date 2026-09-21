@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![GitHub release](https://img.shields.io/badge/repo-public-success)](https://github.com/rwang220/yida_model)
 
-Yida-Model-14B 是在 [Qwen/Qwen3-14B](https://huggingface.co/Qwen/Qwen3-14B) 上，用内部中文医疗指令数据做 LoRA 监督微调后，再合并得到的全量权重。Hub 上是合并后的 `bfloat16` 权重（**不是** PEFT adapter）。
+Yida-Model-14B 是在 [Qwen/Qwen3-14B](https://huggingface.co/Qwen/Qwen3-14B) 上，用经过治理的中文医学知识语料做 LoRA 监督微调后，再合并得到的全量权重。Hub 上是合并后的 `bfloat16` 权重（**不是** PEFT adapter）。
 
 本模型仅供研究与工程评估。它**不是**医疗器械，不得单独作为临床决策依据。
 
@@ -112,9 +112,13 @@ vllm serve rwang220/Yida-Model-14B --reasoning-parser qwen3
 
 ### 数据
 
-内部医疗 SFT 混合数据（`merged_scores_v4_three_models_score5` / 前缀优化 CoT）。多数类别上限 10,000 条；`MedSafety` 与 `MedEthics` 为 30,000。验证集 10,000 条 held-out。
+结构化语料来自一千余册医学教材、临床指南与参考书，覆盖内科、外科、妇产科、儿科、药理学、诊断学与循证医学。微调数据经过生成、质量筛选与评估反馈治理：多维打分（医学准确性、表达质量、安全伦理）、类别均衡与语义去重。
 
-任务族（训练注册表中的名称）：CMB-Clin-extended, MedAnalysis, MedCare, MedChartQC, MedDiag, MedDiffer, MedEthics, MedExam, MedExplain, MedHC, MedHG, MedInsureCalc, MedInsureCheck, MedLitQA, MedMC, MedOutcome, MedPHM, MedPathQC, MedPopular, MedPrimary, MedPsychCare, MedPsychQA, MedRecordGen, MedRehab, MedReportQC, MedRxCheck, MedRxPlan, MedSafety, MedSpeQA, MedSummary, MedSynonym, MedTeach, MedTerm, MedTreat, SMDoc。
+## 评估
+
+14B 实验模型在 MedBench 中文医疗综合公开榜并列第 10（能力维度：医学文本生成、知识问答、临床推理、文本理解、安全合规）。该排名是论文记载的研究阶段快照，不代表临床有效性。
+
+本 checkpoint 的训练指标：最终 train loss 0.5922；eval loss 0.5709，token acc 0.8124。
 
 ## Hub 文件
 
@@ -132,8 +136,8 @@ Hub 总大小约 **27.5 GiB**（约 29.5 GB）。
 限制：
 
 - 可能编造指南、剂量、诊断和文献。
-- 训练数据为内部数据，此处未完整公开。
-- 本说明中的评估仅为训练/验证 loss，不声称公开临床基准成绩。
+- 训练数据此处未完整公开。
+- MedBench 排名是研究阶段快照，不代表临床有效性。
 - 输出可能把思维过程（`<think>…</think>`）和最终答案混在一起。
 
 ## 引用

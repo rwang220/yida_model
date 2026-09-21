@@ -6,7 +6,7 @@
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![GitHub release](https://img.shields.io/badge/repo-public-success)](https://github.com/rwang220/yida_model)
 
-Yida-Model-14B is a merged full-weight checkpoint of [Qwen/Qwen3-14B](https://huggingface.co/Qwen/Qwen3-14B) after LoRA supervised fine-tuning on an internal Chinese medical instruction mix. Hub files are merged `bfloat16` weights (**not** a PEFT adapter).
+Yida-Model-14B is a merged full-weight checkpoint of [Qwen/Qwen3-14B](https://huggingface.co/Qwen/Qwen3-14B) after LoRA supervised fine-tuning on a governed Chinese medical knowledge corpus. Hub files are merged `bfloat16` weights (**not** a PEFT adapter).
 
 This model is for research and engineering evaluation. It is **not** a medical device and must not be used as the sole basis for clinical decisions.
 
@@ -112,9 +112,13 @@ Fine-tuned with [ms-swift](https://github.com/modelscope/ms-swift) LoRA, then me
 
 ### Data
 
-Internal medical SFT mix (`merged_scores_v4_three_models_score5` / prefix-optimized CoT). Most categories were capped at 10,000 samples; `MedSafety` and `MedEthics` at 30,000. Validation used 10,000 held-out samples.
+A structured corpus built from more than a thousand medical textbooks, clinical guidelines, and reference works, spanning internal medicine, surgery, obstetrics and gynecology, pediatrics, pharmacology, diagnostics, and evidence-based medicine. Fine-tuning data is produced through a governance loop: collaborative generation, three-axis scoring (medical accuracy, expression quality, safety ethics), category balancing, and semantic deduplication.
 
-Task families (names from the training registry): CMB-Clin-extended, MedAnalysis, MedCare, MedChartQC, MedDiag, MedDiffer, MedEthics, MedExam, MedExplain, MedHC, MedHG, MedInsureCalc, MedInsureCheck, MedLitQA, MedMC, MedOutcome, MedPHM, MedPathQC, MedPopular, MedPrimary, MedPsychCare, MedPsychQA, MedRecordGen, MedRehab, MedReportQC, MedRxCheck, MedRxPlan, MedSafety, MedSpeQA, MedSummary, MedSynonym, MedTeach, MedTerm, MedTreat, SMDoc.
+## Evaluation
+
+The 14B experimental model is tied for 10th on the MedBench public leaderboard for comprehensive Chinese medical evaluation (medical text generation, knowledge QA, clinical reasoning, text comprehension, and safety & compliance). That ranking is a research-stage snapshot recorded in the paper and does not indicate clinical validity.
+
+This checkpoint's training metrics: final train loss 0.5922; eval loss 0.5709, token acc 0.8124.
 
 ## Hub files
 
@@ -132,8 +136,8 @@ Intended for research on Chinese medical dialogue, chart/report drafting, and re
 Limitations:
 
 - Can hallucinate guidelines, doses, diagnoses, and citations.
-- Training data is internal and not fully documented here.
-- Evaluation in this card is training/eval loss only; no public clinical benchmark is claimed.
+- Training data is not fully documented here.
+- MedBench ranking is a research snapshot and does not indicate clinical validity.
 - Outputs may mix thinking traces (`<think>…</think>`) with the final answer.
 
 ## Citation
