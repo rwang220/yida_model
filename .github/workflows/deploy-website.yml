@@ -11,7 +11,7 @@ on:
   push:
     branches: [main]
     paths:
-      - docs/index.html
+      - docs/**
       - .github/workflows/deploy-website.yml
 
 permissions:
@@ -32,11 +32,18 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Upload index.html
+      - name: Upload site
         run: |
+          aws s3 sync docs/ "s3://${{ secrets.WEBSITE_S3_BUCKET }}/" \
+            --exclude ".nojekyll" \
+            --exclude "*.md" \
+            --cache-control "public, max-age=86400"
           aws s3 cp docs/index.html "s3://${{ secrets.WEBSITE_S3_BUCKET }}/index.html" \
             --content-type "text/html; charset=utf-8" \
             --cache-control "public, max-age=300"
+          aws s3 cp docs/assets/site.css "s3://${{ secrets.WEBSITE_S3_BUCKET }}/assets/site.css" \
+            --content-type "text/css; charset=utf-8" \
+            --cache-control "public, max-age=86400"
 
       - name: Invalidate CloudFront
         run: |

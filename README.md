@@ -30,7 +30,7 @@ Git does not store the ~27.5 GiB weight shards. Those live on Hugging Face.
 | `chat_template.jinja` | Qwen3 thinking / tool-calling chat template |
 | `model.safetensors.index.json` | Index of the six Hub weight shards |
 | `examples/inference.py` | Load from Hub and generate |
-| `docs/index.html` | English official website (GitHub Pages source) |
+| `docs/` | English official website (`index.html` + `assets/`) |
 
 Download weights:
 

@@ -16,9 +16,10 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 STACK_NAME="${STACK_NAME:-yida-model-website}"
 BUCKET_NAME="${BUCKET_NAME:-yida-model-website-rwang220}"
-REGION="${AWS_REGION:-${AWS_DEFAULT_REGION:-us-east-1}}"
+REGION="${AWS_REGION:-${AWS_DEFAULT_REGION:-ap-east-1}}"
 TEMPLATE="${ROOT}/infra/website-cloudfront.yaml"
-SITE_FILE="${ROOT}/docs/index.html"
+SITE_DIR="${ROOT}/docs"
+SITE_FILE="${SITE_DIR}/index.html"
 
 if ! command -v aws >/dev/null 2>&1; then
   echo "Install AWS CLI v2 first: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html"
@@ -45,11 +46,20 @@ BUCKET="$(aws cloudformation describe-stacks --stack-name "$STACK_NAME" --region
 DIST_ID="$(aws cloudformation describe-stacks --stack-name "$STACK_NAME" --region "$REGION" --query "Stacks[0].Outputs[?OutputKey=='DistributionId'].OutputValue" --output text)"
 URL="$(aws cloudformation describe-stacks --stack-name "$STACK_NAME" --region "$REGION" --query "Stacks[0].Outputs[?OutputKey=='WebsiteURL'].OutputValue" --output text)"
 
-echo "Uploading site to s3://$BUCKET/index.html"
+echo "Uploading site to s3://$BUCKET/"
+aws s3 sync "$SITE_DIR" "s3://$BUCKET/" \
+  --region "$REGION" \
+  --exclude ".nojekyll" \
+  --exclude "*.md" \
+  --cache-control "public, max-age=86400"
 aws s3 cp "$SITE_FILE" "s3://$BUCKET/index.html" \
   --region "$REGION" \
   --content-type "text/html; charset=utf-8" \
   --cache-control "public, max-age=300"
+aws s3 cp "$SITE_DIR/assets/site.css" "s3://$BUCKET/assets/site.css" \
+  --region "$REGION" \
+  --content-type "text/css; charset=utf-8" \
+  --cache-control "public, max-age=86400"
 
 echo "Invalidating CloudFront $DIST_ID"
 aws cloudfront create-invalidation --distribution-id "$DIST_ID" --paths "/*" >/dev/null

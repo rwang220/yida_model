@@ -30,7 +30,7 @@ Git **不存放**约 27.5 GiB 的权重分片，权重只在 Hugging Face 上。
 | `chat_template.jinja` | Qwen3 思维链 / 工具调用对话模板 |
 | `model.safetensors.index.json` | Hub 上六个权重分片的索引 |
 | `examples/inference.py` | 从 Hub 加载并生成 |
-| `docs/index.html` | 英文官网（GitHub Pages 发布目录） |
+| `docs/` | 英文官网（`index.html` 与 `assets/`） |
 
 下载权重：
 
