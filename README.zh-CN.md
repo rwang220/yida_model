@@ -49,7 +49,6 @@ huggingface-cli download rwang220/Yida-Model-14B --local-dir ./weights
 | 分词长度 | `model_max_length` 为 131,072；SFT 使用 8,192 |
 | 语言 | 中文、英文（训练数据以中文医疗任务为主） |
 | 许可 | Apache 2.0 |
-| 本地导出名 | `yida_modelv2`（2026-09-17 导出） |
 
 `generation_config.json` 默认采样：temperature 0.6，top_p 0.95，top_k 20。
 
@@ -107,7 +106,7 @@ vllm serve rwang220/Yida-Model-14B --reasoning-parser qwen3
 | 最终 train loss | 0.5922 |
 | 最终 eval loss | 0.5709，token acc 0.8124 |
 | 最后 / 最佳 ckpt | `checkpoint-47384` |
-| 合并 | 6 个 safetensor 分片（`max_shard_size=5GB`），目录名 `yida_modelv2` |
+| 合并 | 6 个 safetensor 分片（`max_shard_size=5GB`） |
 
 ### 数据
 

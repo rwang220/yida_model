@@ -49,7 +49,6 @@ huggingface-cli download rwang220/Yida-Model-14B --local-dir ./weights
 | Tokenizer length | `model_max_length` 131,072; SFT used 8,192 |
 | Languages | Chinese and English (training mix is primarily Chinese medical tasks) |
 | License | Apache 2.0 |
-| Local export name | `yida_modelv2` (exported 2026-09-17) |
 
 Default sampling in `generation_config.json`: temperature 0.6, top_p 0.95, top_k 20.
 
@@ -107,7 +106,7 @@ Fine-tuned with [ms-swift](https://github.com/modelscope/ms-swift) LoRA, then me
 | Final train loss | 0.5922 |
 | Final eval loss | 0.5709, token acc 0.8124 |
 | Last / best ckpt | `checkpoint-47384` |
-| Merge | 6 safetensor shards (`max_shard_size=5GB`) as `yida_modelv2` |
+| Merge | 6 safetensor shards (`max_shard_size=5GB`) |
 
 ### Data
 
