@@ -16,7 +16,6 @@ body:
         - Documentation (README)
         - Tokenizer / config
         - examples/inference.py
-        - training/ scripts
         - Other
     validations:
       required: true

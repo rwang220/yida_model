@@ -13,7 +13,7 @@ This model is for research and engineering evaluation. It is **not** a medical d
 | Resource | Link |
 | --- | --- |
 | Weights and Hub model card | [huggingface.co/rwang220/Yida-Model-14B](https://huggingface.co/rwang220/Yida-Model-14B) |
-| This repository (docs, configs, tokenizer, training snapshot) | [github.com/rwang220/yida_model](https://github.com/rwang220/yida_model) |
+| This repository (docs, configs, tokenizer) | [github.com/rwang220/yida_model](https://github.com/rwang220/yida_model) |
 | Base model | [Qwen/Qwen3-14B](https://huggingface.co/Qwen/Qwen3-14B) |
 
 ## What this repository contains
@@ -29,7 +29,6 @@ Git does not store the ~27.5 GiB weight shards. Those live on Hugging Face.
 | `chat_template.jinja` | Qwen3 thinking / tool-calling chat template |
 | `model.safetensors.index.json` | Index of the six Hub weight shards |
 | `examples/inference.py` | Load from Hub and generate |
-| `training/` | `sft.sh` plus final LoRA `args.json` / `adapter_config.json` |
 
 Download weights:
 
@@ -92,7 +91,7 @@ vllm serve rwang220/Yida-Model-14B --reasoning-parser qwen3
 
 ## Training
 
-Fine-tuned with [ms-swift](https://github.com/modelscope/ms-swift) LoRA, then merged into full weights. Scripts and the last LoRA config are under [`training/`](training/).
+Fine-tuned with [ms-swift](https://github.com/modelscope/ms-swift) LoRA, then merged into full weights. Training code is not published.
 
 | Item | Value |
 | --- | --- |

@@ -4,6 +4,6 @@
 
 ## Checklist
 
-- [ ] No weight shards, tokens, `.env`, or private data
+- [ ] No training code, weight shards, tokens, `.env`, or private data
 - [ ] Docs still match the Hub checkpoint (`rwang220/Yida-Model-14B`)
 - [ ] English and Chinese READMEs updated together when behavior or claims change
