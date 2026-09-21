@@ -14,7 +14,7 @@ Yida-Model-14B 是在 [Qwen/Qwen3-14B](https://huggingface.co/Qwen/Qwen3-14B) �
 | --- | --- |
 | 权重与 Hub 模型卡 | [huggingface.co/rwang220/Yida-Model-14B](https://huggingface.co/rwang220/Yida-Model-14B) |
 | 本仓库（说明、配置、分词器） | [github.com/rwang220/yida_model](https://github.com/rwang220/yida_model) |
-| 英文官网 | [`website/index.html`](website/index.html) |
+| 英文官网 | [rwang220.github.io/yida_model](https://rwang220.github.io/yida_model/) |
 | 基座模型 | [Qwen/Qwen3-14B](https://huggingface.co/Qwen/Qwen3-14B) |
 
 ## 本仓库包含什么
@@ -30,7 +30,7 @@ Git **不存放**约 27.5 GiB 的权重分片，权重只在 Hugging Face 上。
 | `chat_template.jinja` | Qwen3 思维链 / 工具调用对话模板 |
 | `model.safetensors.index.json` | Hub 上六个权重分片的索引 |
 | `examples/inference.py` | 从 Hub 加载并生成 |
-| `website/index.html` | 英文官网（单文件离线页） |
+| `docs/index.html` | 英文官网（GitHub Pages 发布目录） |
 
 下载权重：
 
