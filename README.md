@@ -14,7 +14,7 @@ This model is for research and engineering evaluation. It is **not** a medical d
 | --- | --- |
 | Weights and Hub model card | [huggingface.co/rwang220/Yida-Model-14B](https://huggingface.co/rwang220/Yida-Model-14B) |
 | This repository (docs, configs, tokenizer) | [github.com/rwang220/yida_model](https://github.com/rwang220/yida_model) |
-| English website | [rwang220.github.io/yida_model](https://rwang220.github.io/yida_model/) |
+| English website | [dwownvjsph6j2.cloudfront.net](https://dwownvjsph6j2.cloudfront.net/) |
 | Base model | [Qwen/Qwen3-14B](https://huggingface.co/Qwen/Qwen3-14B) |
 
 ## What this repository contains

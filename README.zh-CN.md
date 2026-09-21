@@ -14,7 +14,7 @@ Yida-Model-14B 是在 [Qwen/Qwen3-14B](https://huggingface.co/Qwen/Qwen3-14B) �
 | --- | --- |
 | 权重与 Hub 模型卡 | [huggingface.co/rwang220/Yida-Model-14B](https://huggingface.co/rwang220/Yida-Model-14B) |
 | 本仓库（说明、配置、分词器） | [github.com/rwang220/yida_model](https://github.com/rwang220/yida_model) |
-| 英文官网 | [rwang220.github.io/yida_model](https://rwang220.github.io/yida_model/) |
+| 英文官网 | [dwownvjsph6j2.cloudfront.net](https://dwownvjsph6j2.cloudfront.net/) |
 | 基座模型 | [Qwen/Qwen3-14B](https://huggingface.co/Qwen/Qwen3-14B) |
 
 ## 本仓库包含什么

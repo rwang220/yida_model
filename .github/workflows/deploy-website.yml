@@ -22,7 +22,7 @@ jobs:
     if: github.event_name == 'workflow_dispatch' || vars.AWS_WEBSITE_DEPLOY == 'true'
     runs-on: ubuntu-latest
     env:
-      AWS_REGION: us-east-1
+      AWS_REGION: ap-east-1
     steps:
       - uses: actions/checkout@v4
 
