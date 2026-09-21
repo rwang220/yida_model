@@ -1,0 +1,10 @@
+*.safetensors
+*.bin
+*.gguf
+.env
+*.token
+.cache/
+.huggingface/
+__pycache__/
+*.pyc
+.DS_Store

@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: If you use Yida-Model-14B, please cite this repository and the Hugging Face model.
+type: software
+title: Yida-Model-14B
+abstract: Merged full-weight Qwen3-14B checkpoint after LoRA supervised fine-tuning on an internal Chinese medical instruction mix.
+authors:
+  - family-names: Wang
+    given-names: Rui
+repository-code: https://github.com/rwang220/yida_model
+url: https://huggingface.co/rwang220/Yida-Model-14B
+license: Apache-2.0
+date-released: "2026-09-17"
+keywords:
+  - qwen3
+  - large-language-model
+  - medical
+  - sft
+  - chinese
+preferred-citation:
+  type: generic
+  title: Yida-Model-14B
+  authors:
+    - family-names: Wang
+      given-names: Rui
+  year: 2026
+  url: https://huggingface.co/rwang220/Yida-Model-14B
+  notes: Code and docs https://github.com/rwang220/yida_model
+references:
+  - type: software
+    title: Qwen3-14B
+    authors:
+      - name: Qwen Team
+    url: https://huggingface.co/Qwen/Qwen3-14B
+    license: Apache-2.0

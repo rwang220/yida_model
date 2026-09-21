@@ -1,0 +1,24 @@
+name: Question
+description: Usage or training questions about Yida-Model-14B
+title: "[Question] "
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: Check [README.md](https://github.com/rwang220/yida_model/blob/main/README.md) / [README.zh-CN.md](https://github.com/rwang220/yida_model/blob/main/README.zh-CN.md) first.
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+    validations:
+      required: true
+  - type: dropdown
+    id: lang
+    attributes:
+      label: Preferred reply language
+      options:
+        - Chinese
+        - English
+        - Either
+    validations:
+      required: true

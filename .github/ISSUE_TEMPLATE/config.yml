@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Hugging Face model
+    url: https://huggingface.co/rwang220/Yida-Model-14B
+    about: Weights, Hub files, and the live model card
+  - name: 中文说明
+    url: https://github.com/rwang220/yida_model/blob/main/README.zh-CN.md
+    about: Chinese documentation for this repository

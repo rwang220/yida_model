@@ -1,0 +1,36 @@
+name: Bug report
+description: Something is wrong in the docs, configs, tokenizer, or example code
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Weight-file problems belong on [Hugging Face](https://huggingface.co/rwang220/Yida-Model-14B).
+        Do not paste tokens, `.env` contents, or patient data.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Documentation (README)
+        - Tokenizer / config
+        - examples/inference.py
+        - training/ scripts
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Expected vs actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: How to reproduce
+      description: Commands, `transformers` version, and a minimal snippet
+    validations:
+      required: true
